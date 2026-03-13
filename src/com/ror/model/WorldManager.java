@@ -41,7 +41,7 @@ public class WorldManager {
         LinkedQueue<Entity> noxterra = new LinkedQueue<>();
         noxterra.enqueue(new ShadowCreeper());
         noxterra.enqueue(new ShadowCreeper());
-        noxterra.enqueue(new ShadowWarlord()); // corrected name
+        noxterra.enqueue(new ShadowWarlord());
         worlds.put("Noxterra", noxterra);
     }
 

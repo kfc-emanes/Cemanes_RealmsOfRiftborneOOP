@@ -36,7 +36,7 @@ public class CharacterSelectPanel extends JPanel {
         title.setBounds(0, 40, 1280, 60);
         add(title);
 
-        addCharacterBox("Andrew ( Time Blade )", "/com/ror/model/Assets/Images/Andrew.png",
+        addCharacterBox("Andrew ( Time Blade )", "/com/ror/model/Assets/Images/Andrew3.png",
                 140, 160, e -> parent.showBattle(new com.ror.model.Playable.Andrew()));
 
         addCharacterBox("Flashey ( Sky Mage )", "/com/ror/model/Assets/Images/Flashley.png",

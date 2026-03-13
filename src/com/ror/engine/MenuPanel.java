@@ -1,8 +1,6 @@
 package com.ror.engine;
 
-import com.ror.util.GameFonts;
-import com.ror.util.MusicController;
-import com.ror.util.UIUtils;
+import com.ror.util.*;
 import java.awt.*;
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -37,8 +35,18 @@ public class MenuPanel extends JPanel {
         UIUtils.styleLargeButton(playBtn, GameFonts.pixelFont.deriveFont(28f));
         UIUtils.styleLargeButton(exitBtn, GameFonts.pixelFont.deriveFont(28f));
 
-        playBtn.addActionListener(e -> parent.showSelect());
-        exitBtn.addActionListener(e -> System.exit(0));
+        playBtn.addActionListener(e -> {
+            
+            Sound.play("/com/ror/models/Assets/sfx/BtnClick.wav");
+            parent.showSelect();
+            
+        });
+        exitBtn.addActionListener(e -> {
+            
+            Sound.play("/com/ror/models/Assets/sfx/BtnClick.wav");
+            System.exit(0);
+
+        });
 
         JPanel center = new JPanel(new GridBagLayout());
         center.setOpaque(false);
@@ -54,7 +62,7 @@ public class MenuPanel extends JPanel {
 
         add(center, BorderLayout.CENTER);
 
-        // Footer panel (kept but will be drawn inside bottom box visually)
+        // Footer panel (kept but will be drawn inside bottom box visually) - NOT LIKE ITS GOING ANYWHERE FIDO
         JLabel rfooter = new JLabel("Debug Build V1.0", SwingConstants.RIGHT);
         rfooter.setFont(GameFonts.pixelFont.deriveFont(24f));
         rfooter.setForeground(Color.WHITE);

@@ -3,7 +3,7 @@ package com.ror.util;
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.plaf.basic.BasicScrollBarUI;
-
+//Optional but makes for unity of UI, walay masaag nga windows 98 type lmao
     public class WhiteScrollBarUI extends BasicScrollBarUI {
 
         @Override
