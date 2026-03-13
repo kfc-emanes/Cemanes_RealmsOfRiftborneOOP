@@ -108,16 +108,16 @@ public class BattleEngine {
         listener.onEnableSkillButtons(true);
     }
 
-    public void playerUseSkill(int index) {
+    public boolean playerUseSkill(int index) {
         if (!playerTurn || player == null || enemy == null) {
-            return;
+            return false;
         }
 
         Skill s = player.getSkills()[index];
 
         if (s.isOnCooldown()) {
             listener.onLog("- " + s.getName() + " is on cooldown for " + s.getCurrentCooldown() + " more turns!");
-            return;
+            return false;
         }
 
         listener.onLog("- " + player.getName() + " uses " + s.getName() + "!");
@@ -184,6 +184,7 @@ public class BattleEngine {
         listener.onUpdateHP(player, enemy);
 
         playerTurn = false;
+        return true;
     }
 
     public void enemyTurn() {
@@ -237,11 +238,9 @@ public class BattleEngine {
             return;
         }
 
-        // Reduce cooldowns at end of enemy turn (complete one full round)
-        for (Skill skill : player.getSkills()) {
-            skill.reduceCooldown();
-        }
-        listener.onUpdateSkillButtons(player.getSkills());
+        // No cooldown reductions during enemy actions.
+        // Cooldowns are reduced in playerUseSkill() after a player attack, so enemy
+        // turns only influence status/effects.
 
         if (player.isAlive()) {
             playerTurn = true;

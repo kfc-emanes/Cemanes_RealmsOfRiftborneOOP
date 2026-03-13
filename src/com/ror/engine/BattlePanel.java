@@ -343,8 +343,12 @@ public class BattlePanel extends JPanel {
             return;
         }
 
-        engine.playerUseSkill(index);
+        boolean used = engine.playerUseSkill(index);
         updateSkillButtons();
+
+        if (!used) {
+            return; // don't pass turn if skill was invalid/cooldown
+        }
 
         Timer timer = new Timer(900, e -> {
             ((Timer) e.getSource()).stop();
@@ -369,8 +373,6 @@ public class BattlePanel extends JPanel {
                 + (skills[2].isOnCooldown() ? " (CD: " + skills[2].getCurrentCooldown() + ")" : ""));
     }
 
-    // Battle resolution is now handled by BattleEngine; BattlePanel only updates UI
-    // and delegates actions.
     private void clearBattleLog() {
         battleLog.setText("");
     }
