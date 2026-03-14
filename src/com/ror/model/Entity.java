@@ -54,7 +54,8 @@ public class Entity {
     public void takeDamage(int dmg) {
         int actualDamage = Math.max(0, dmg - def);
         currHealth -= actualDamage;
-        if (currHealth < 0) currHealth = 0;
+        if (currHealth < 0)
+            currHealth = 0;
         System.out.println(name + " took " + actualDamage + " damage! " + name + " has " + currHealth + " HP left.");
     }
 
@@ -86,12 +87,12 @@ public class Entity {
     }
 
     public Skill getSkillByName(String name) {
-    for (Skill skill : skills) {
-        if (skill.getName().equalsIgnoreCase(name)) {
-            return skill;
+        for (Skill skill : skills) {
+            if (skill.getName().equalsIgnoreCase(name)) {
+                return skill;
+            }
         }
-    }
-    return null;
+        return null;
     }
 
     public void setSkills(Skill[] skills) {
@@ -109,7 +110,8 @@ public class Entity {
         // Reset all skill cooldowns
         if (skills != null) {
             for (Skill skill : skills) {
-                if (skill != null) skill.resetCooldown(); // reset to 0
+                if (skill != null)
+                    skill.resetCooldown(); // reset to 0
             }
         }
         level++;

@@ -8,16 +8,14 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.border.LineBorder;
 
-
 public class CharacterSelectPanel extends JPanel {
     private JButton backButton;
     private JButton andrewButton;
     private JButton flameWarriorButton;
     private JButton skyMageButton;
-    private JButton NyxButton;    
-    private JButton TharnButton; 
+    private JButton NyxButton;
+    private JButton TharnButton;
     private Image backgroundImage;
-
 
     public GameFrame parent;
 
@@ -26,10 +24,9 @@ public class CharacterSelectPanel extends JPanel {
         setLayout(null);
         setBackground(Color.BLACK);
 
-       setBackgroundImage("/com/ror/model/Assets/Backgrounds/Riftborne.png");
+        setBackgroundImage("/com/ror/model/Assets/Backgrounds/Riftborne.png");
 
-
-        // Title 
+        // Title
         JLabel title = new JLabel("Select Your Character", SwingConstants.CENTER);
         title.setFont(GameFonts.pixelFont.deriveFont(36f));
         title.setForeground(Color.WHITE);
@@ -62,7 +59,7 @@ public class CharacterSelectPanel extends JPanel {
 
     }
 
-   private void addCharacterBox(String name, String path, int x, int y, ActionListener clickAction) {
+    private void addCharacterBox(String name, String path, int x, int y, ActionListener clickAction) {
 
         JPanel box = new JPanel(null);
         box.setBounds(x, y, 400, 120);
@@ -74,7 +71,7 @@ public class CharacterSelectPanel extends JPanel {
             @Override
             public void mouseEntered(MouseEvent e) {
                 box.setBorder(BorderFactory.createLineBorder(Color.DARK_GRAY, 3));
-                box.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR)); 
+                box.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
             }
 
             @Override
@@ -116,25 +113,27 @@ public class CharacterSelectPanel extends JPanel {
         box.add(label);
 
         add(box);
-   }
+    }
 
-   private ImageIcon loadScaledIcon(String path, int w, int h) throws Exception {
-    ImageIcon src = new ImageIcon(getClass().getResource(path));
-    Image img = src.getImage();
-    if(img == null) throw new Exception("Null imo image: " + path);
+    private ImageIcon loadScaledIcon(String path, int w, int h) throws Exception {
+        ImageIcon src = new ImageIcon(getClass().getResource(path));
+        Image img = src.getImage();
+        if (img == null)
+            throw new Exception("Null imo image: " + path);
 
-    int iw = img.getWidth(null);
-    int ih = img.getHeight(null);
+        int iw = img.getWidth(null);
+        int ih = img.getHeight(null);
 
-    if(iw <= 0 || ih <= 0) throw new Exception("Dim imo image: " + path);
+        if (iw <= 0 || ih <= 0)
+            throw new Exception("Dim imo image: " + path);
 
-    double scale = Math.min((double) w / iw, (double) h / ih);
-    int newW = (int) Math.round(iw * scale);
-    int newH = (int) Math.round(ih * scale);
+        double scale = Math.min((double) w / iw, (double) h / ih);
+        int newW = (int) Math.round(iw * scale);
+        int newH = (int) Math.round(ih * scale);
 
-    Image scaled = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
-    return new ImageIcon(scaled);
-   }
+        Image scaled = img.getScaledInstance(newW, newH, Image.SCALE_SMOOTH);
+        return new ImageIcon(scaled);
+    }
 
     public void setBackgroundImage(String path) {
         try {
@@ -150,7 +149,7 @@ public class CharacterSelectPanel extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
 
-      if (backgroundImage != null) {
+        if (backgroundImage != null) {
             int imgW = backgroundImage.getWidth(null);
             int imgH = backgroundImage.getHeight(null);
             double imgAspect = (double) imgW / imgH;
@@ -170,13 +169,28 @@ public class CharacterSelectPanel extends JPanel {
         }
     }
 
-
-
     // Getter (for flexibility)
-    public JButton getAndrewButton() { return andrewButton; }
-    public JButton getBackButton() { return backButton; }
-    public JButton getFlameWarriorButton() { return flameWarriorButton; }
-    public JButton getSkyMageButton() { return skyMageButton; }
-    public JButton getNyxButton() { return NyxButton; }
-    public JButton getTharnButton() { return TharnButton; }
+    public JButton getAndrewButton() {
+        return andrewButton;
+    }
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+
+    public JButton getFlameWarriorButton() {
+        return flameWarriorButton;
+    }
+
+    public JButton getSkyMageButton() {
+        return skyMageButton;
+    }
+
+    public JButton getNyxButton() {
+        return NyxButton;
+    }
+
+    public JButton getTharnButton() {
+        return TharnButton;
+    }
 }

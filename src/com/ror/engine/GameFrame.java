@@ -9,6 +9,7 @@ public class GameFrame extends JFrame {
     private MenuPanel menuPanel;
     private CharacterSelectPanel selectPanel;
     private BattlePanel battlePanel;
+    private Entity currentCharacter;
 
     public GameFrame() {
         setTitle("Realms of Riftborne");
@@ -44,4 +45,5 @@ public class GameFrame extends JFrame {
         ((CardLayout) getContentPane().getLayout()).show(getContentPane(), "Battle");
         battlePanel.startBattle(chosenCharacter);
     }
+
 }
